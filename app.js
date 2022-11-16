@@ -79,6 +79,7 @@ function clearClass() {
     emoji.classList.remove('emojiTriste')
     emoji.classList.remove('emojiTiempo')
 }
+
 window.addEventListener("DOMContentLoaded",escogerPreguntas(0))
 
 window.addEventListener('DOMContentLoaded',()=>{
@@ -122,6 +123,7 @@ const tituloModal = document.getElementById('tituloModal')
 const containerTime = document.getElementById('containerTime')
 
 telefono.addEventListener('click',()=>{
+    clearClass()
     detenerContadores()
     fAbrir()
     tituloModal.textContent = "!Tienes 1 minuto para llamar un amigo!"
@@ -132,6 +134,7 @@ telefono.addEventListener('click',()=>{
 })
 
 publico.addEventListener('click',()=>{
+    clearClass()
     detenerContadores()
     fAbrir()
     tituloModal.textContent = "!Tienes 1 minuto para pedir ayuda del publico!"
