@@ -70,11 +70,15 @@ btnSiguiente.addEventListener('click',()=>{
     reiniciar()
     tiempo()
     clearInterval(stop)
-    emoji.classList.remove('emojiFeliz')
-    emoji.classList.remove('emojiTriste')
-    
+    clearClass()
+   
 })
 
+function clearClass() {
+    emoji.classList.remove('emojiFeliz')
+    emoji.classList.remove('emojiTriste')
+    emoji.classList.remove('emojiTiempo')
+}
 window.addEventListener("DOMContentLoaded",escogerPreguntas(0))
 
 window.addEventListener('DOMContentLoaded',()=>{
@@ -99,6 +103,7 @@ window.addEventListener('DOMContentLoaded',()=>{
 btnContinuar.addEventListener('click',()=>{
     clearInterval(stop)
     tiempo()
+    clearClass()
     capaPregunta.style.display = "none"
     PreguntaPrincipal.style.display = "none"
     posicionPregunta.style.display = "none"
@@ -119,7 +124,7 @@ const containerTime = document.getElementById('containerTime')
 telefono.addEventListener('click',()=>{
     detenerContadores()
     fAbrir()
-    tituloModal.textContent = "!Tienes dos minutos para llamar un amigo!"
+    tituloModal.textContent = "!Tienes 1 minuto para llamar un amigo!"
     // containerTime.innerHTML = ""
     temp.style.display = "none"
     containerTime.appendChild(contComodin)
@@ -129,7 +134,7 @@ telefono.addEventListener('click',()=>{
 publico.addEventListener('click',()=>{
     detenerContadores()
     fAbrir()
-    tituloModal.textContent = "!Tienes dos minutos para pedir ayuda del publico!"
+    tituloModal.textContent = "!Tienes 1 minuto para pedir ayuda del publico!"
     // containerTime.innerHTML = ""
     temp.style.display = "none"
     containerTime.appendChild(contComodin)
@@ -318,7 +323,7 @@ function reiniciar() {
     contComodin.style.display = "none"
     tiempo()
     clearInterval(stop)
-    temp.innerHTML = "01:00";
+    temp.innerHTML = "00:20";
 
     capaPregunta.style.display = "flex"
     PreguntaPrincipal.style.display = "flex"
@@ -339,7 +344,7 @@ function reiniciar() {
     publico.style.backgroundColor = "#372158"
     
 
-    if(counta >=22){
+    if(counta >= 20){
         window.location.href = "./index.html"
     }else{
         escogerPreguntas(counta)
@@ -417,7 +422,7 @@ function tiempo(){
 
     detenerContadores()
 
-    let time = 60
+    let time = 20
 
     stop = setInterval(() => {
 
@@ -455,37 +460,6 @@ function tiempoComodin(){
 
     let time = 60
 
-        stop2 = setInterval(() => {
-        
-        contComodin.textContent = "02:00"
-        
-        time = time -1 
-
-        if(contComodin.textContent = "02:00"){
-            contComodin.textContent = "01:" + time
-        }
-        
-        if(time<10){
-            contComodin.textContent = "01:0" + time
-        }
-
-        if(time<0){
-            contComodin.textContent = "01:00"
-        }
-
-        if(contComodin.textContent === "01:00"){
-            clearInterval(stop2)
-            segundos()
-        }
-    
-    }, 1000);
-    
-}
-
-function segundos(){
-
-    let time = 60
-
     stop3 = setInterval(() => {
         temp.innerHTML = contComodin.textContent
         time = time -1 
@@ -508,6 +482,7 @@ function segundos(){
         }
     
     }, 1000);
+    
 }
 
 function detenerContadores() {
